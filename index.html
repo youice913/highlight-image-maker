@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>발췌 - 텍스트 이미지 메이커</title>
+  <!-- Google Fonts: 리디바탕 + Noto Serif KR (명조체) 추가 -->
+  <link href="https://webfontworld.github.io/ridibatang/RidiBatang.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <h2>발췌</h2>
+  
+  <div class="main-container">
+    <div class="left-section">
+      <div id="card" class="card default-template">
+        <div class="quote" id="quoteText">여기에 선택한 텍스트가 표시됩니다.</div>
+        <div class="info">
+          <div id="titlePreview">작품 제목</div>
+          <div id="authorPreview">작가 이름</div>
+        </div>
+      </div>
+      <div class="button-group">
+        <button onclick="saveImage()">이미지 저장</button>
+        <button onclick="copyToClipboard()" class="copy-button">클립보드 복사</button>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="input-section">
+        <textarea id="textInput" placeholder="전체 텍스트를 붙여넣고, 드래그하세요"></textarea>
+        <div class="basic-controls">
+          <label>제목: <input id="titleInput" type="text" /></label>
+          <label>작가: <input id="authorInput" type="text" /></label>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <h3>텍스트 스타일</h3>
+          <label>폰트:
+            <select id="fontSelect">
+              <option value="'Noto Sans KR', sans-serif">Noto Sans</option>
+              <option value="'Nanum Gothic', sans-serif">나눔고딕</option>
+              <option value="'Noto Serif KR', serif" selected>본명조</option>
+            </select>
+          </label>
+          <label>
+            폰트 크기:
+                  <input type="range" id="fontSizeSlider" min="10" max="40" value="20">
+            <span id="fontSizeValue">27px</span>
+          </label>
+          <label>폰트 굵기:
+            <select id="fontWeightSelect">
+              <option value="400" selected>보통</option>
+              <option value="500">중간</option>
+              <option value="700">굵게</option>
+            </select>
+          </label>
+          <label>정렬:
+            <select id="textAlignSelect">
+              <option value="center">가운데</option>
+              <option value="left" selected>왼쪽</option>
+            </select>
+          </label>
+          <label>글자 색상:
+            <select id="textColorSelect">
+              <option value="#1a1a1a">검은색</option>
+              <option value="#ffffff">흰색</option>
+              <option value="#e8f4f8">옅은 푸른색</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <h3>이미지 설정</h3>
+          <label>비율:
+            <select id="ratioSelect">
+              <option value="1">1:1</option>
+              <option value="1.25">4:5</option>
+              <option value="0.75">3:4</option>
+              <option value="0.5625">16:9</option>
+              <option value="0.666">2:3</option>
+              <option value="1.777">16:9 와이드</option>
+            </select>
+          </label>
+          <label>템플릿:
+            <select id="templateSelect">
+              <option value="default">기본 템플릿</option>
+              <option value="receipt">영수증 스타일</option>
+            </select>
+          </label>
+          <div class="background-controls">
+            <button id="uploadButton" class="upload-button">배경 이미지 업로드</button>
+            <input type="file" id="backgroundImage" accept="image/*" style="display: none;">
+            <div class="background-options">
+              <label>
+                이미지 크기
+                <input type="range" id="imageSize" min="50" max="200" value="100">
+              </label>
+              <label>
+                좌우 위치
+                <input type="range" id="imagePositionX" min="0" max="100" value="50">
+              </label>
+              <label>
+                상하 위치
+                <input type="range" id="imagePositionY" min="0" max="100" value="50">
+              </label>
+            </div>
+          </div>
+          <div class="control-group">
+            <h3>그라데이션 배경 설정</h3>
+            <label>
+              색상 1:
+              <input type="color" id="gradientColor1" value="#e5e6e8">
+            </label>
+            <label>
+              색상 2:
+              <input type="color" id="gradientColor2" value="#c3cfe2">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="background-examples">
+    <h3>배경 예시</h3>
+    <div class="example-grid">
+      <div class="example-item">
+        <img src="backgrounds/example1.jpg" alt="예시 배경 1">
+        <div class="example-overlay">선택</div>
+      </div>
+      <div class="example-item">
+        <img src="backgrounds/example2.jpg" alt="예시 배경 2">
+        <div class="example-overlay">선택</div>
+      </div>
+      <div class="example-item">
+        <img src="backgrounds/example3.jpg" alt="예시 배경 3">
+        <div class="example-overlay">선택</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <div id="generatedImageContainer" style="margin-top: 40px; text-align: center;"></div>
+</body>
+</html>
