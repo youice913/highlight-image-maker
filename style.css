@@ -60,6 +60,8 @@ h2 {
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 textarea {
@@ -82,14 +84,17 @@ textarea {
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  background: white;
-  padding: 20px;
+  width: 100%;
+  max-width: 800px;   /* input-section과 동일한 기준 */
+  padding: 20px;      /* 시각적 여백도 맞춤 */
+  background: white;  /* 배경이 있으면 균형감 있음 */
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  margin: 0 auto;     /* 가운데 정렬 */
 }
+
+
 
 .control-group {
   display: flex;
@@ -150,23 +155,29 @@ textarea {
 }
 
 .background-options {
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* 좌우 균등 배치 */
+  gap: 12px;
   margin-top: 10px;
+  width: 100%; /* 외각 박스에 꽉 차게 */
 }
 
 .background-options label {
+  flex: 1 1 calc(33% - 12px); /* 3개가 한 줄에 들어가도록 */
+  min-width: 120px;
+  max-width: 33%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 15px;
+  font-size: 13px;
+  gap: 4px;
 }
 
 .background-options input[type="range"] {
   width: 100%;
-  margin: 5px 0;
+  height: 4px;
 }
+
 
 .card {
   width: 600px;

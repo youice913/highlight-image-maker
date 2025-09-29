@@ -46,9 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
     titlePreview.style.fontFamily = selectedFont; // 제목 폰트 업데이트
     authorPreview.style.fontFamily = selectedFont; // 작가 폰트 업데이트
 
-    const selectedFontSize = fontSizeSlider.value; // 슬라이더 값 가져오기
-    quoteText.style.fontSize = selectedFontSize + 'px'; // 폰트 크기 단위를 px로 변경
-    fontSizeValue.textContent = selectedFontSize + 'px'; // 현재 폰트 크기 값 표시
+    const selectedFontSize = fontSizeSlider.value;
+    quoteText.style.fontSize = selectedFontSize + 'px';
+    titlePreview.style.fontSize = selectedFontSize + 'px';
+    authorPreview.style.fontSize = selectedFontSize + 'px';
+    fontSizeValue.textContent = selectedFontSize + 'px';
 
     quoteText.style.fontWeight = fontWeightSelect.value;
     quoteText.style.textAlign = textAlignSelect.value;
@@ -68,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
       card.className = 'card default-template';
     }
   }
+  
 
   textInput.addEventListener('mouseup', updateCard);
   titleInput.addEventListener('input', updateCard);
